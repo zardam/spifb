@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sync
+sudo rmmod spifb
+make -C /lib/modules/`uname -r`/build M=$PWD
+sudo modprobe fb_sys_fops
+sudo modprobe sysimgblt
+sudo modprobe sysfillrect
+sudo modprobe syscopyarea
+sync
+sudo insmod spifb.ko
